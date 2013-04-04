@@ -1,16 +1,16 @@
-require  File.join(File.dirname(__FILE__), "attribute_name")
-require  File.join(File.dirname(__FILE__), "attribute_string")
+require File.join(File.dirname(__FILE__), "attribute/name")
+require File.join(File.dirname(__FILE__), "attribute/value")
 
 module Attribeautiful
 
   class Attribute
 
     attr_accessor :attr_name
-    attr_accessor :attr_string
+    attr_accessor :attr_value
 
     def initialize(name)
-      self.attr_name   = Attribeautiful::AttributeName.new(name)
-      self.attr_string = Attribeautiful::AttributeString.new
+      self.attr_name  = Attribeautiful::Attribute::Name.new(name)
+      self.attr_value = Attribeautiful::Attribute::Value.new
       self
     end
 
@@ -25,23 +25,23 @@ module Attribeautiful
     end
 
     def add(*args)
-      self.attr_string.add(*args)
+      self.attr_value.add(*args)
       self
     end
 
     def use_spaces
-      self.attr_string.use_spaces
+      self.attr_value.use_spaces
       self
     end
 
     def use_semicolons
-      self.attr_string.use_semicolons
+      self.attr_value.use_semicolons
       self
     end
 
     def to_s
-      return "" if attr_string.to_s.empty?
-      return "#{attr_name}=\"#{attr_string}\""
+      return "" if attr_value.to_s.empty?
+      return "#{attr_name}=\"#{attr_value}\""
     end
 
   end
