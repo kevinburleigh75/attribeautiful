@@ -45,23 +45,13 @@ sb = SectionBlock.new do |sb|
   sb.body_style_use_semicolons
 end
 
-puts "header[class]:      #{sb.header_class_attr}"
-puts "header[custom-one]: #{sb.header_custom_one_attr}"
-puts "header[custom_two]: #{sb.header_custom_two_attr}"
-puts "-----"
-puts "body[id]:    #{sb.body_id_attr}"
-puts "body[class]: #{sb.body_class_attr}"
-puts "body[style]: #{sb.body_style_attr}"
+puts "#{sb.header_class_attr}"        # class="important slick"
+puts "#{sb.header_custom_one_attr}"   # custom-one="do-something"
+puts "#{sb.header_custom_two_attr}"   # custom_two="do-something-else"
+puts "#{sb.body_id_attr}"             # id="specific-section-id"
+puts "#{sb.body_class_attr}"          # nothing!
+puts "#{sb.body_style_attr}"          # style="float:left;color:blue;position:relative"
 ```
-will output:
-
->header[class]:      class="important slick"
->header[custom-one]: custom-one="do-something"
->header[custom_two]: custom_two="do-something-else"
->-----
->body[id]:    id="specific-section-id"
->body[class]: 
->body[style]: style="float:left;color:blue;position:relative"
 
 ## Contributing
 
