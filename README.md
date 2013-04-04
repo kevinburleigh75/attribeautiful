@@ -1,6 +1,7 @@
 # Attribeautiful
 
-TODO: Write a gem description
+Dynamically-generated HTML element attribute management methods.
+Easily add attributes to an element, or content to an attribute value.
 
 ## Installation
 
@@ -18,7 +19,49 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+class SectionBlock
+  include Attribeautiful
+
+  html_element :header
+  html_element :body
+
+  def initialize
+    yield self if block_given?
+    self
+  end
+end
+
+sb = SectionBlock.new do |sb|
+  sb.header_class_add "important", "slick"
+
+  sb.header_custom_one_add "do-something"
+  sb.header_custom_two_add "do-something-else"
+  sb.header_custom_two_use_underscores
+
+  sb.body_id_add      "specific-section-id"
+  sb.body_style_add   "float:left", "color:blue"
+  sb.body_style_add   "position:relative"
+  sb.body_style_use_semicolons
+end
+
+puts "header[class]:      #{sb.header_class_attr}"
+puts "header[custom-one]: #{sb.header_custom_one_attr}"
+puts "header[custom_two]: #{sb.header_custom_two_attr}"
+puts "-----"
+puts "body[id]:    #{sb.body_id_attr}"
+puts "body[class]: #{sb.body_class_attr}"
+puts "body[style]: #{sb.body_style_attr}"
+```
+will output:
+
+>header[class]:      class="important slick"
+>header[custom-one]: custom-one="do-something"
+>header[custom_two]: custom_two="do-something-else"
+>-----
+>body[id]:    id="specific-section-id"
+>body[class]: 
+>body[style]: style="float:left;color:blue;position:relative"
 
 ## Contributing
 
