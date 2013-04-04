@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Dynamically-generated HTML element attribute management methods.
                          Easily add attributes to an element, or content to an attribute
                          value.}
-  gem.homepage      = ""
+  gem.homepage      = "http://github.com/kevinburleigh75/attribeautiful"
 
   gem.add_dependency  "eager_beaver"
   gem.add_dependency  "active_support", ">= 3.0.0"
