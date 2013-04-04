@@ -1,5 +1,7 @@
 require File.join(File.dirname(__FILE__), "attribute/name")
 require File.join(File.dirname(__FILE__), "attribute/value")
+require 'active_support/lazy_load_hooks'
+require 'active_support/core_ext/string'
 
 module Attribeautiful
 
@@ -41,7 +43,7 @@ module Attribeautiful
 
     def to_s
       return "" if attr_value.to_s.empty?
-      return "#{attr_name}=\"#{attr_value}\""
+      return "#{attr_name}=\"#{attr_value}\"".html_safe
     end
 
   end

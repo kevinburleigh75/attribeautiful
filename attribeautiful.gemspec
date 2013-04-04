@@ -10,8 +10,10 @@ Gem::Specification.new do |gem|
                          value.}
   gem.homepage      = ""
 
-  gem.files         = `git ls-files`.split($\)
   gem.add_dependency  "eager_beaver"
+  gem.add_dependency  "active_support", ">= 3.0.0"
+
+  gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "attribeautiful"
