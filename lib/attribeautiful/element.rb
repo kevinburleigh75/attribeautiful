@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), "attribute")
 module Attribeautiful
 
   class Element
-    include EagerBeaver::MethodMissingUtils
+    include EagerBeaver
 
     ## handle <attr_name>_attr methods
     add_method_matcher do |mm|

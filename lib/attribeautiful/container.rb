@@ -16,7 +16,7 @@ module Attribeautiful
     end
 
     def html_element(elem_name)
-      include EagerBeaver::MethodMissingUtils
+      include EagerBeaver
 
       html_element_names << elem_name
 
