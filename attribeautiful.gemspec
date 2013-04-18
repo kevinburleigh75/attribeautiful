@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "http://github.com/kevinburleigh75/attribeautiful"
 
   gem.add_dependency  "eager_beaver"
-  gem.add_dependency  "active_support", ">= 3.0.0"
+  gem.add_dependency  "active_support", "~> 3.0"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
