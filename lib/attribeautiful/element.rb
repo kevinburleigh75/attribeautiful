@@ -7,19 +7,20 @@ module Attribeautiful
     include EagerBeaver
 
     ## handle <attr_name>_attr methods
-    add_method_matcher do |mm|
-      mm.matcher = Proc.new do
-        /\A(\w+)_attr/ =~ missing_method_name
-        @attr_name = Regexp.last_match ? Regexp.last_match[1] : nil
-      end
+    add_method_handler do |mh|
+      mh.match = lambda {
+        /\A(\w+)_attr/ =~ context.missing_method_name
+        context.attr_name = $1
+        return Regexp.last_match
+      }
 
-      mm.new_method_code_maker = Proc.new do
+      mh.handle = lambda {
         %Q{
-          def #{missing_method_name}
-            @#{@attr_name}_attr ||= Attribeautiful::Attribute.new("#{@attr_name}")
+          def #{context.missing_method_name}
+            @#{context.attr_name}_attr ||= Attribeautiful::Attribute.new("#{context.attr_name}")
           end
         }
-      end
+      }
     end
   end
 
